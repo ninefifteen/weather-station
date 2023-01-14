@@ -58,6 +58,7 @@
 		455D083D2973340800D56344 /* DefaultNetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkServiceTests.swift; sourceTree = "<group>"; };
 		455D08402973343300D56344 /* XCTest+XCTAssertThrowsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+XCTAssertThrowsError.swift"; sourceTree = "<group>"; };
 		455D0843297334FF00D56344 /* WeatherStationTests-WeatherStationMocks.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeatherStationTests-WeatherStationMocks.generated.swift"; sourceTree = "<group>"; };
+		455D08452973380B00D56344 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +152,7 @@
 		455D081F29732DAB00D56344 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				455D08452973380B00D56344 /* Info.plist */,
 				455D07F429732B4A00D56344 /* Assets.xcassets */,
 			);
 			path = SupportingFiles;
@@ -512,7 +514,7 @@
 				DEVELOPMENT_TEAM = 3BY4XC4687;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = WeatherStation/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -541,7 +543,7 @@
 				DEVELOPMENT_TEAM = 3BY4XC4687;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = WeatherStation/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
