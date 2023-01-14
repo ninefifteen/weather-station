@@ -11,7 +11,6 @@
 		455D07F329732B4800D56344 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D07F229732B4800D56344 /* ContentView.swift */; };
 		455D07F529732B4A00D56344 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455D07F429732B4A00D56344 /* Assets.xcassets */; };
 		455D07F829732B4A00D56344 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455D07F729732B4A00D56344 /* Preview Assets.xcassets */; };
-		455D080229732B4B00D56344 /* WeatherStationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D080129732B4B00D56344 /* WeatherStationTests.swift */; };
 		455D081C29732D3B00D56344 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 455D081B29732D3B00D56344 /* Factory */; };
 		455D082429732E7100D56344 /* WeatherStation+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D082329732E7100D56344 /* WeatherStation+Injection.swift */; };
 		455D082629732E9E00D56344 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D082529732E9E00D56344 /* AppError.swift */; };
@@ -23,6 +22,10 @@
 		455D083229732FA300D56344 /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D083129732FA300D56344 /* URLService.swift */; };
 		455D083429732FB700D56344 /* DefaultURLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D083329732FB700D56344 /* DefaultURLService.swift */; };
 		455D08362973302700D56344 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D08352973302700D56344 /* Day.swift */; };
+		455D08392973334600D56344 /* Mockingbird in Frameworks */ = {isa = PBXBuildFile; productRef = 455D08382973334600D56344 /* Mockingbird */; };
+		455D083E2973340800D56344 /* DefaultNetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D083D2973340800D56344 /* DefaultNetworkServiceTests.swift */; };
+		455D08412973343300D56344 /* XCTest+XCTAssertThrowsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D08402973343300D56344 /* XCTest+XCTAssertThrowsError.swift */; };
+		455D0844297334FF00D56344 /* WeatherStationTests-WeatherStationMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D0843297334FF00D56344 /* WeatherStationTests-WeatherStationMocks.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +45,6 @@
 		455D07F429732B4A00D56344 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		455D07F729732B4A00D56344 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		455D07FD29732B4B00D56344 /* WeatherStationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherStationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		455D080129732B4B00D56344 /* WeatherStationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationTests.swift; sourceTree = "<group>"; };
 		455D082329732E7100D56344 /* WeatherStation+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherStation+Injection.swift"; sourceTree = "<group>"; };
 		455D082529732E9E00D56344 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		455D082729732EF700D56344 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
@@ -53,6 +55,9 @@
 		455D083129732FA300D56344 /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
 		455D083329732FB700D56344 /* DefaultURLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultURLService.swift; sourceTree = "<group>"; };
 		455D08352973302700D56344 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		455D083D2973340800D56344 /* DefaultNetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkServiceTests.swift; sourceTree = "<group>"; };
+		455D08402973343300D56344 /* XCTest+XCTAssertThrowsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+XCTAssertThrowsError.swift"; sourceTree = "<group>"; };
+		455D0843297334FF00D56344 /* WeatherStationTests-WeatherStationMocks.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeatherStationTests-WeatherStationMocks.generated.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455D08392973334600D56344 /* Mockingbird in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +122,9 @@
 		455D080029732B4B00D56344 /* WeatherStationTests */ = {
 			isa = PBXGroup;
 			children = (
-				455D080129732B4B00D56344 /* WeatherStationTests.swift */,
+				455D08422973344D00D56344 /* MockingbirdMocks */,
+				455D083F2973341500D56344 /* Extensions */,
+				455D083B297333C700D56344 /* UnitTests */,
 			);
 			path = WeatherStationTests;
 			sourceTree = "<group>";
@@ -177,6 +185,38 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		455D083B297333C700D56344 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				455D083C297333E200D56344 /* ServiceTests */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		455D083C297333E200D56344 /* ServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				455D083D2973340800D56344 /* DefaultNetworkServiceTests.swift */,
+			);
+			path = ServiceTests;
+			sourceTree = "<group>";
+		};
+		455D083F2973341500D56344 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				455D08402973343300D56344 /* XCTest+XCTAssertThrowsError.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		455D08422973344D00D56344 /* MockingbirdMocks */ = {
+			isa = PBXGroup;
+			children = (
+				455D0843297334FF00D56344 /* WeatherStationTests-WeatherStationMocks.generated.swift */,
+			);
+			path = MockingbirdMocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,6 +244,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 455D081429732B4B00D56344 /* Build configuration list for PBXNativeTarget "WeatherStationTests" */;
 			buildPhases = (
+				455D083A2973335A00D56344 /* Generate Mockingbird Mocks */,
 				455D07F929732B4B00D56344 /* Sources */,
 				455D07FA29732B4B00D56344 /* Frameworks */,
 				455D07FB29732B4B00D56344 /* Resources */,
@@ -214,6 +255,9 @@
 				455D07FF29732B4B00D56344 /* PBXTargetDependency */,
 			);
 			name = WeatherStationTests;
+			packageProductDependencies = (
+				455D08382973334600D56344 /* Mockingbird */,
+			);
 			productName = WeatherStationTests;
 			productReference = 455D07FD29732B4B00D56344 /* WeatherStationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -248,6 +292,7 @@
 			mainGroup = 455D07E429732B4800D56344;
 			packageReferences = (
 				455D081A29732D3B00D56344 /* XCRemoteSwiftPackageReference "Factory" */,
+				455D08372973334600D56344 /* XCRemoteSwiftPackageReference "mockingbird" */,
 			);
 			productRefGroup = 455D07EE29732B4800D56344 /* Products */;
 			projectDirPath = "";
@@ -278,6 +323,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		455D083A2973335A00D56344 /* Generate Mockingbird Mocks */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Mockingbird Mocks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${SRCROOT}/WeatherStationTests/MockingbirdMocks/WeatherStationTests-WeatherStationMocks.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -eu\n\n# Prevent Xcode 13 from running this script while indexing.\n[[ \"${ACTION}\" == \"indexbuild\" ]] && exit 0\n\n# Infer the derived data location from the build environment.\n[[ -z \"${DERIVED_DATA+x}\" ]] && DERIVED_DATA=\"$(echo \"${BUILD_ROOT}\" | sed -n 's|\\(.*\\)/Build/.*|\\1|p')\"\n\n\"${DERIVED_DATA}/SourcePackages/checkouts/mockingbird/mockingbird\" generate --targets \"WeatherStation\" --outputs \"${SRCROOT}/WeatherStationTests/MockingbirdMocks/WeatherStationTests-WeatherStationMocks.generated.swift\" --only-protocols --disable-swiftlint\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		455D07E929732B4800D56344 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -302,7 +370,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				455D080229732B4B00D56344 /* WeatherStationTests.swift in Sources */,
+				455D08412973343300D56344 /* XCTest+XCTAssertThrowsError.swift in Sources */,
+				455D083E2973340800D56344 /* DefaultNetworkServiceTests.swift in Sources */,
+				455D0844297334FF00D56344 /* WeatherStationTests-WeatherStationMocks.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +640,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		455D08372973334600D56344 /* XCRemoteSwiftPackageReference "mockingbird" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/birdrides/mockingbird";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.20.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -577,6 +655,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 455D081A29732D3B00D56344 /* XCRemoteSwiftPackageReference "Factory" */;
 			productName = Factory;
+		};
+		455D08382973334600D56344 /* Mockingbird */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 455D08372973334600D56344 /* XCRemoteSwiftPackageReference "mockingbird" */;
+			productName = Mockingbird;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
