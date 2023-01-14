@@ -1,0 +1,22 @@
+[
+    {
+        "id": "K1D3",
+        "name": "PLATTE",
+        "longitude": -98.82952,
+        "latitude": 43.40332,
+        "temperature": 46.4,
+        "wind_speed": 6.90468887898,
+        "wind_direction": 270,
+        "chance_of_precipitation": 0
+    },
+    {
+        "id": "K1S5",
+        "name": "Sunnyside Municipal Airport",
+        "longitude": -119.9704,
+        "latitude": 46.3271,
+        "temperature": 54.5,
+        "wind_speed": 9,
+        "wind_direction": 360,
+        "chance_of_precipitation": 80
+    },
+]
