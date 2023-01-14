@@ -58,7 +58,7 @@
 		455D083D2973340800D56344 /* DefaultNetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkServiceTests.swift; sourceTree = "<group>"; };
 		455D08402973343300D56344 /* XCTest+XCTAssertThrowsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+XCTAssertThrowsError.swift"; sourceTree = "<group>"; };
 		455D08452973380B00D56344 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45A0E30829733C2D006D0700 /* WeatherStationTests-WeatherStationMocks.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeatherStationTests-WeatherStationMocks.generated.swift"; sourceTree = "<group>"; };
+		45A0E30829733C2D006D0700 /* WeatherStationTests-WeatherStationMocks.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WeatherStationTests-WeatherStationMocks.generated.swift"; path = "WeatherStationTests/MockingbirdMocks/WeatherStationTests-WeatherStationMocks.generated.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
