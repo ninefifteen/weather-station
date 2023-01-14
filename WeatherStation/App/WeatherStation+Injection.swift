@@ -14,4 +14,5 @@ extension Container {
     static let networkService = Factory { DefaultNetworkService() as NetworkService }
     static let urlService = Factory { DefaultURLService() as URLService }
     static let urlSession = Factory { URLSession(configuration: .default) as URLSessionAPI }
+    static let weatherService = Factory { DefaultWeatherService() as WeatherService }
 }
