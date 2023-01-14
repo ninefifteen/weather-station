@@ -216,8 +216,9 @@
 			children = (
 				45A0E30829733C2D006D0700 /* WeatherStationTests-WeatherStationMocks.generated.swift */,
 			);
-			path = MockingbirdMocks;
-			sourceTree = "<group>";
+			name = MockingbirdMocks;
+			path = WeatherStationTests/MockingbirdMocks;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
