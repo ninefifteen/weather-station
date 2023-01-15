@@ -19,4 +19,14 @@
         "wind_direction": 360,
         "chance_of_precipitation": 80
     },
+    {
+        "id": "K6V4",
+        "name": "WALLMUNC",
+        "longitude": -102.2546,
+        "latitude": 43.99949,
+        "temperature": null,
+        "wind_speed": null,
+        "wind_direction": null,
+        "chance_of_precipitation": 0
+    }
 ]

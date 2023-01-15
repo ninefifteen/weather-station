@@ -24,8 +24,9 @@ struct WeatherStationMapView: View {
     
     var body: some View {
         ZStack {
-            Text("WeatherStationMapView")
+            MapView(initialRegion: viewModel.initialRegion, stations: viewModel.displayedStations)
         }
+        .edgesIgnoringSafeArea(.all)
         .onAppear {
             Task {
                 await viewModel.onAppear()

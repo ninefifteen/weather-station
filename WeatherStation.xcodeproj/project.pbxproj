@@ -14,6 +14,7 @@
 		4541DE5929735C8F005A7B52 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541DE5829735C8F005A7B52 /* Fixtures.swift */; };
 		4541DE5B29735E29005A7B52 /* testWeather1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4541DE5A29735E29005A7B52 /* testWeather1.json */; };
 		4541DE5D29735E87005A7B52 /* DefaultWeatherServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541DE5C29735E87005A7B52 /* DefaultWeatherServiceTests.swift */; };
+		4541DE5F297363FC005A7B52 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541DE5E297363FC005A7B52 /* MapView.swift */; };
 		455D07F129732B4800D56344 /* WeatherStationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D07F029732B4800D56344 /* WeatherStationApp.swift */; };
 		455D07F529732B4A00D56344 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455D07F429732B4A00D56344 /* Assets.xcassets */; };
 		455D07F829732B4A00D56344 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455D07F729732B4A00D56344 /* Preview Assets.xcassets */; };
@@ -32,6 +33,9 @@
 		455D083E2973340800D56344 /* DefaultNetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D083D2973340800D56344 /* DefaultNetworkServiceTests.swift */; };
 		455D08412973343300D56344 /* XCTest+XCTAssertThrowsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D08402973343300D56344 /* XCTest+XCTAssertThrowsError.swift */; };
 		45A0E30929733C2D006D0700 /* WeatherStationTests-WeatherStationMocks.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A0E30829733C2D006D0700 /* WeatherStationTests-WeatherStationMocks.generated.swift */; };
+		45B962F329737F0500720431 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B962F229737F0500720431 /* Array+Extensions.swift */; };
+		45B962F529738A1600720431 /* MeanOfAngles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B962F429738A1600720431 /* MeanOfAngles.swift */; };
+		45B962F8297390FE00720431 /* MeanOfAnglesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B962F7297390FE00720431 /* MeanOfAnglesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,7 @@
 		4541DE5829735C8F005A7B52 /* Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
 		4541DE5A29735E29005A7B52 /* testWeather1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testWeather1.json; sourceTree = "<group>"; };
 		4541DE5C29735E87005A7B52 /* DefaultWeatherServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWeatherServiceTests.swift; sourceTree = "<group>"; };
+		4541DE5E297363FC005A7B52 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		455D07ED29732B4800D56344 /* WeatherStation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherStation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		455D07F029732B4800D56344 /* WeatherStationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationApp.swift; sourceTree = "<group>"; };
 		455D07F429732B4A00D56344 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +76,9 @@
 		455D08402973343300D56344 /* XCTest+XCTAssertThrowsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+XCTAssertThrowsError.swift"; sourceTree = "<group>"; };
 		455D08452973380B00D56344 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45A0E30829733C2D006D0700 /* WeatherStationTests-WeatherStationMocks.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WeatherStationTests-WeatherStationMocks.generated.swift"; path = "WeatherStationTests/MockingbirdMocks/WeatherStationTests-WeatherStationMocks.generated.swift"; sourceTree = SOURCE_ROOT; };
+		45B962F229737F0500720431 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		45B962F429738A1600720431 /* MeanOfAngles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanOfAngles.swift; sourceTree = "<group>"; };
+		45B962F7297390FE00720431 /* MeanOfAnglesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanOfAnglesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +144,7 @@
 				455D07F629732B4A00D56344 /* Preview Content */,
 				455D082129732DC600D56344 /* Services */,
 				455D081F29732DAB00D56344 /* SupportingFiles */,
+				45B962F029737EBF00720431 /* Utilities */,
 				455D082029732DB800D56344 /* ViewsViewModels */,
 			);
 			path = WeatherStation;
@@ -193,6 +202,7 @@
 			children = (
 				4541DE50297355CB005A7B52 /* WeatherStationMapView.swift */,
 				4541DE4E297355B6005A7B52 /* WeatherStationMapViewModel.swift */,
+				4541DE5E297363FC005A7B52 /* MapView.swift */,
 			);
 			path = ViewsViewModels;
 			sourceTree = "<group>";
@@ -223,6 +233,7 @@
 		455D083B297333C700D56344 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				45B962F6297390D700720431 /* UtilitiesTests */,
 				455D083C297333E200D56344 /* ServiceTests */,
 			);
 			path = UnitTests;
@@ -253,6 +264,31 @@
 			name = MockingbirdMocks;
 			path = WeatherStationTests/MockingbirdMocks;
 			sourceTree = SOURCE_ROOT;
+		};
+		45B962F029737EBF00720431 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				45B962F429738A1600720431 /* MeanOfAngles.swift */,
+				45B962F129737ED500720431 /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		45B962F129737ED500720431 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				45B962F229737F0500720431 /* Array+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		45B962F6297390D700720431 /* UtilitiesTests */ = {
+			isa = PBXGroup;
+			children = (
+				45B962F7297390FE00720431 /* MeanOfAnglesTests.swift */,
+			);
+			path = UtilitiesTests;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -390,12 +426,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				455D082629732E9E00D56344 /* AppError.swift in Sources */,
+				4541DE5F297363FC005A7B52 /* MapView.swift in Sources */,
 				455D082829732EF700D56344 /* Station.swift in Sources */,
 				4541DE4F297355B6005A7B52 /* WeatherStationMapViewModel.swift in Sources */,
 				455D08362973302700D56344 /* Day.swift in Sources */,
 				455D082E29732F8100D56344 /* NetworkService.swift in Sources */,
 				4541DE5529735741005A7B52 /* DefaultWeatherService.swift in Sources */,
+				45B962F529738A1600720431 /* MeanOfAngles.swift in Sources */,
 				455D083229732FA300D56344 /* URLService.swift in Sources */,
+				45B962F329737F0500720431 /* Array+Extensions.swift in Sources */,
 				4541DE5329735731005A7B52 /* WeatherService.swift in Sources */,
 				455D082C29732F6400D56344 /* URLSession+URLSessionAPI.swift in Sources */,
 				455D082429732E7100D56344 /* WeatherStation+Injection.swift in Sources */,
@@ -416,6 +455,7 @@
 				4541DE5D29735E87005A7B52 /* DefaultWeatherServiceTests.swift in Sources */,
 				45A0E30929733C2D006D0700 /* WeatherStationTests-WeatherStationMocks.generated.swift in Sources */,
 				4541DE5929735C8F005A7B52 /* Fixtures.swift in Sources */,
+				45B962F8297390FE00720431 /* MeanOfAnglesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +600,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -589,6 +630,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

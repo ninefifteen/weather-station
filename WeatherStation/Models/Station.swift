@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct Station: Codable, Equatable {
     let id: String
@@ -16,4 +17,17 @@ struct Station: Codable, Equatable {
     let windSpeed: Double?
     let windDirection: Double?
     let chanceOfPrecipitation: Double?
+}
+
+class StationAnnotation: NSObject, MKAnnotation {
+    
+    init(station: Station) {
+        self.station = station
+    }
+    
+    let station: Station
+    
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: station.latitude, longitude: station.longitude)
+    }
 }

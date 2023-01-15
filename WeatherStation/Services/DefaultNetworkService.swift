@@ -16,9 +16,9 @@ class DefaultNetworkService: NetworkService {
         do {
             let (data, response) = try await urlSession.data(for: request, delegate: nil)
             try verify(response: response)
-            if let jsonString = data.prettyPrintedJSONString {
-                print(jsonString)
-            }
+//            if let jsonString = data.prettyPrintedJSONString {
+//                print(jsonString)
+//            }
             return data
         } catch {
             if let error = error as? AppError, error == .invalidResponse {
@@ -29,12 +29,14 @@ class DefaultNetworkService: NetworkService {
         }
     }
     
-    // MARK: - Properties
-    
-    @Injected(Container.urlSession) private var urlSession: URLSessionAPI
+    // MARK: - Constants
     
     private let httpOk = 200...299
     
+    // MARK: - Properties
+    
+    @Injected(Container.urlSession) private var urlSession: URLSessionAPI
+        
     // MARK: - Functions
     
     private func verify(response: URLResponse) throws {

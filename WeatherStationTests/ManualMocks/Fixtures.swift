@@ -12,9 +12,9 @@ import Foundation
 
 extension Station {
     
-    static let testWeather1: [Self] = [testStation1, testStation2]
+    static let testWeather1: [Station] = [testStation1, testStation2, testStation3]
     
-    static let testStation1: Self = Station(
+    static let testStation1: Station = Station(
         id: "K1D3",
         name: "PLATTE",
         latitude: 43.40332,
@@ -25,7 +25,7 @@ extension Station {
         chanceOfPrecipitation: 0
     )
     
-    static let testStation2: Self = Station(
+    static let testStation2: Station = Station(
         id: "K1S5",
         name: "Sunnyside Municipal Airport",
         latitude: 46.3271,
@@ -35,10 +35,21 @@ extension Station {
         windDirection: 360,
         chanceOfPrecipitation: 80
     )
+    
+    static let testStation3: Station = Station(
+        id: "K6V4",
+        name: "WALLMUNC",
+        latitude: 43.99949,
+        longitude: -102.2546,
+        temperature: nil,
+        windSpeed: nil,
+        windDirection: nil,
+        chanceOfPrecipitation: 0
+    )
 }
 
 extension Data {
-    static let testWeather1: Self = {
+    static let testWeather1: Data = {
         let bundle = Bundle(for: DefaultNetworkServiceTests.self)
         let url = bundle.url(forResource: "testWeather1", withExtension: "json")!
         let data = try! Data(contentsOf: url)
