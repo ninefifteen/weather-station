@@ -36,6 +36,11 @@
 		45B962F329737F0500720431 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B962F229737F0500720431 /* Array+Extensions.swift */; };
 		45B962F529738A1600720431 /* MeanOfAngles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B962F429738A1600720431 /* MeanOfAngles.swift */; };
 		45B962F8297390FE00720431 /* MeanOfAnglesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B962F7297390FE00720431 /* MeanOfAnglesTests.swift */; };
+		45B962FA2973B39400720431 /* StationCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B962F92973B39400720431 /* StationCalloutView.swift */; };
+		45B962FC2973B63400720431 /* StationCalloutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B962FB2973B63400720431 /* StationCalloutViewModel.swift */; };
+		45BB821029746A930084B984 /* UIDetailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB820F29746A930084B984 /* UIDetailLabel.swift */; };
+		45BB821229746B430084B984 /* UIHeadlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB821129746B430084B984 /* UIHeadlineLabel.swift */; };
+		45BB8214297482B80084B984 /* StationCalloutDetailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB8213297482B80084B984 /* StationCalloutDetailRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +84,11 @@
 		45B962F229737F0500720431 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		45B962F429738A1600720431 /* MeanOfAngles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanOfAngles.swift; sourceTree = "<group>"; };
 		45B962F7297390FE00720431 /* MeanOfAnglesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanOfAnglesTests.swift; sourceTree = "<group>"; };
+		45B962F92973B39400720431 /* StationCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCalloutView.swift; sourceTree = "<group>"; };
+		45B962FB2973B63400720431 /* StationCalloutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCalloutViewModel.swift; sourceTree = "<group>"; };
+		45BB820F29746A930084B984 /* UIDetailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDetailLabel.swift; sourceTree = "<group>"; };
+		45BB821129746B430084B984 /* UIHeadlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHeadlineLabel.swift; sourceTree = "<group>"; };
+		45BB8213297482B80084B984 /* StationCalloutDetailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCalloutDetailRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,12 +150,13 @@
 			isa = PBXGroup;
 			children = (
 				455D081E29732DA300D56344 /* App */,
+				455D082029732DB800D56344 /* AppComponents */,
 				455D081D29732D7E00D56344 /* Models */,
 				455D07F629732B4A00D56344 /* Preview Content */,
 				455D082129732DC600D56344 /* Services */,
 				455D081F29732DAB00D56344 /* SupportingFiles */,
+				45BB820B297469350084B984 /* UIComponents */,
 				45B962F029737EBF00720431 /* Utilities */,
-				455D082029732DB800D56344 /* ViewsViewModels */,
 			);
 			path = WeatherStation;
 			sourceTree = "<group>";
@@ -197,14 +208,17 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		455D082029732DB800D56344 /* ViewsViewModels */ = {
+		455D082029732DB800D56344 /* AppComponents */ = {
 			isa = PBXGroup;
 			children = (
+				45B962F92973B39400720431 /* StationCalloutView.swift */,
+				45B962FB2973B63400720431 /* StationCalloutViewModel.swift */,
 				4541DE50297355CB005A7B52 /* WeatherStationMapView.swift */,
 				4541DE4E297355B6005A7B52 /* WeatherStationMapViewModel.swift */,
 				4541DE5E297363FC005A7B52 /* MapView.swift */,
+				45BB8213297482B80084B984 /* StationCalloutDetailRowView.swift */,
 			);
-			path = ViewsViewModels;
+			path = AppComponents;
 			sourceTree = "<group>";
 		};
 		455D082129732DC600D56344 /* Services */ = {
@@ -288,6 +302,23 @@
 				45B962F7297390FE00720431 /* MeanOfAnglesTests.swift */,
 			);
 			path = UtilitiesTests;
+			sourceTree = "<group>";
+		};
+		45BB820B297469350084B984 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				45BB820C297469450084B984 /* Labels */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		45BB820C297469450084B984 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				45BB820F29746A930084B984 /* UIDetailLabel.swift */,
+				45BB821129746B430084B984 /* UIHeadlineLabel.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,19 +460,24 @@
 				4541DE5F297363FC005A7B52 /* MapView.swift in Sources */,
 				455D082829732EF700D56344 /* Station.swift in Sources */,
 				4541DE4F297355B6005A7B52 /* WeatherStationMapViewModel.swift in Sources */,
+				45BB821229746B430084B984 /* UIHeadlineLabel.swift in Sources */,
+				45B962FA2973B39400720431 /* StationCalloutView.swift in Sources */,
 				455D08362973302700D56344 /* Day.swift in Sources */,
 				455D082E29732F8100D56344 /* NetworkService.swift in Sources */,
 				4541DE5529735741005A7B52 /* DefaultWeatherService.swift in Sources */,
 				45B962F529738A1600720431 /* MeanOfAngles.swift in Sources */,
 				455D083229732FA300D56344 /* URLService.swift in Sources */,
+				45BB8214297482B80084B984 /* StationCalloutDetailRowView.swift in Sources */,
 				45B962F329737F0500720431 /* Array+Extensions.swift in Sources */,
 				4541DE5329735731005A7B52 /* WeatherService.swift in Sources */,
 				455D082C29732F6400D56344 /* URLSession+URLSessionAPI.swift in Sources */,
 				455D082429732E7100D56344 /* WeatherStation+Injection.swift in Sources */,
 				455D083029732F9400D56344 /* DefaultNetworkService.swift in Sources */,
 				4541DE51297355CB005A7B52 /* WeatherStationMapView.swift in Sources */,
+				45BB821029746A930084B984 /* UIDetailLabel.swift in Sources */,
 				455D083429732FB700D56344 /* DefaultURLService.swift in Sources */,
 				455D082A29732F4000D56344 /* Data+Extensions.swift in Sources */,
+				45B962FC2973B63400720431 /* StationCalloutViewModel.swift in Sources */,
 				455D07F129732B4800D56344 /* WeatherStationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

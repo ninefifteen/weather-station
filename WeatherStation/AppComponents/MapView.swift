@@ -72,7 +72,7 @@ struct MapView: UIViewRepresentable {
                 } else {
                     annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: stationAnnotationIdentifier)
                 }
-                annotationView.canShowCallout = false
+                annotationView.canShowCallout = true
                 if let temperature = stationAnnotation.station.temperature {
                     annotationView.glyphText = String(format: "%.0f°", temperature)
                 } else {
@@ -80,6 +80,8 @@ struct MapView: UIViewRepresentable {
                 }
                 annotationView.clusteringIdentifier = "cluster"
                 annotationView.titleVisibility = .hidden
+                let calloutView = StationCalloutView(station: stationAnnotation.station)
+                annotationView.detailCalloutAccessoryView = calloutView
                 return annotationView
             default:
                 return nil
