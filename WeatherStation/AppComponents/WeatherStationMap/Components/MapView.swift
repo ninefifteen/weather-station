@@ -51,41 +51,73 @@ struct MapView: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             switch annotation {
             case let cluster as MKClusterAnnotation:
-                let annotationView: MKMarkerAnnotationView
-                if let view = mapView.dequeueReusableAnnotationView(withIdentifier: clusterAnnotationIdentifier) as? MKMarkerAnnotationView {
-                    annotationView = view
-                } else {
-                    annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: clusterAnnotationIdentifier)
-                }
-                let stations = cluster.memberAnnotations.compactMap({ $0 as? StationAnnotation }).map { $0.station }
-                if let averageTemperature = stations.averageTemperature() {
-                    annotationView.glyphText = String(format: "%.0f°", averageTemperature)
-                } else {
-                    annotationView.glyphText = ""
-                }
-                annotationView.titleVisibility = .hidden
-                return annotationView
+                return annotationView(for: cluster, in: mapView)
             case let stationAnnotation as StationAnnotation:
-                let annotationView: MKMarkerAnnotationView
-                if let view = mapView.dequeueReusableAnnotationView(withIdentifier: stationAnnotationIdentifier) as? MKMarkerAnnotationView {
-                    annotationView = view
-                } else {
-                    annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: stationAnnotationIdentifier)
-                }
-                annotationView.canShowCallout = true
-                if let temperature = stationAnnotation.station.temperature {
-                    annotationView.glyphText = String(format: "%.0f°", temperature)
-                } else {
-                    annotationView.glyphText = ""
-                }
-                annotationView.clusteringIdentifier = "cluster"
-                annotationView.titleVisibility = .hidden
-                let calloutView = StationCalloutView(station: stationAnnotation.station)
-                annotationView.detailCalloutAccessoryView = calloutView
-                return annotationView
+                return annotationView(for: stationAnnotation, in: mapView)
             default:
                 return nil
             }
+        }
+        
+        private func annotationView(
+            for cluster: MKClusterAnnotation,
+            in mapView: MKMapView
+        ) -> MKAnnotationView {
+            
+            let annotationView: MKMarkerAnnotationView
+            
+            if let view = mapView.dequeueReusableAnnotationView(
+                withIdentifier: clusterAnnotationIdentifier
+            ) as? MKMarkerAnnotationView {
+                annotationView = view
+            } else {
+                annotationView = MKMarkerAnnotationView(annotation: cluster, reuseIdentifier: clusterAnnotationIdentifier)
+            }
+            
+            let stations = cluster.memberAnnotations.compactMap({ $0 as? StationAnnotation }).map { $0.station }
+            
+            if let averageTemperature = stations.averageTemperature() {
+                annotationView.glyphText = String(format: "%.0f°", averageTemperature)
+            } else {
+                annotationView.glyphText = ""
+            }
+            annotationView.titleVisibility = .hidden
+            return annotationView
+        }
+        
+        private func annotationView(
+            for stationAnnotation: StationAnnotation,
+            in mapView: MKMapView
+        ) -> MKAnnotationView {
+            
+            let annotationView: MKMarkerAnnotationView
+            
+            if let view = mapView.dequeueReusableAnnotationView(
+                withIdentifier: stationAnnotationIdentifier
+            ) as? MKMarkerAnnotationView {
+                annotationView = view
+            } else {
+                annotationView = MKMarkerAnnotationView(
+                    annotation: stationAnnotation,
+                    reuseIdentifier: stationAnnotationIdentifier
+                )
+            }
+            
+            annotationView.canShowCallout = true
+            
+            if let temperature = stationAnnotation.station.temperature {
+                annotationView.glyphText = String(format: "%.0f°", temperature)
+            } else {
+                annotationView.glyphText = ""
+            }
+            
+            annotationView.clusteringIdentifier = "cluster"
+            annotationView.titleVisibility = .hidden
+            
+            let calloutView = StationCalloutView(station: stationAnnotation.station)
+            annotationView.detailCalloutAccessoryView = calloutView
+            
+            return annotationView
         }
         
         func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
