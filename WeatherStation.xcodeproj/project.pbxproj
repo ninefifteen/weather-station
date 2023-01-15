@@ -211,12 +211,7 @@
 		455D082029732DB800D56344 /* AppComponents */ = {
 			isa = PBXGroup;
 			children = (
-				45B962F92973B39400720431 /* StationCalloutView.swift */,
-				45B962FB2973B63400720431 /* StationCalloutViewModel.swift */,
-				4541DE50297355CB005A7B52 /* WeatherStationMapView.swift */,
-				4541DE4E297355B6005A7B52 /* WeatherStationMapViewModel.swift */,
-				4541DE5E297363FC005A7B52 /* MapView.swift */,
-				45BB8213297482B80084B984 /* StationCalloutDetailRowView.swift */,
+				45BB82152974986B0084B984 /* WeatherStationMap */,
 			);
 			path = AppComponents;
 			sourceTree = "<group>";
@@ -319,6 +314,27 @@
 				45BB821129746B430084B984 /* UIHeadlineLabel.swift */,
 			);
 			path = Labels;
+			sourceTree = "<group>";
+		};
+		45BB82152974986B0084B984 /* WeatherStationMap */ = {
+			isa = PBXGroup;
+			children = (
+				4541DE50297355CB005A7B52 /* WeatherStationMapView.swift */,
+				4541DE4E297355B6005A7B52 /* WeatherStationMapViewModel.swift */,
+				45BB8216297498B70084B984 /* Components */,
+			);
+			path = WeatherStationMap;
+			sourceTree = "<group>";
+		};
+		45BB8216297498B70084B984 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4541DE5E297363FC005A7B52 /* MapView.swift */,
+				45BB8213297482B80084B984 /* StationCalloutDetailRowView.swift */,
+				45B962F92973B39400720431 /* StationCalloutView.swift */,
+				45B962FB2973B63400720431 /* StationCalloutViewModel.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
