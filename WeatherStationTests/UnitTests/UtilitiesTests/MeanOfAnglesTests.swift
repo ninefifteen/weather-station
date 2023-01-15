@@ -10,6 +10,14 @@ import XCTest
 
 final class MeanOfAnglesTests: XCTestCase {
     
+    override func setUp() {
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
     func test_average() throws {
         let angles = [5.0, 20.0, 65.0, 50.0]
         guard let result = meanOfAngles(angles) else {

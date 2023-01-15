@@ -41,6 +41,7 @@
 		45BB821029746A930084B984 /* UIDetailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB820F29746A930084B984 /* UIDetailLabel.swift */; };
 		45BB821229746B430084B984 /* UIHeadlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB821129746B430084B984 /* UIHeadlineLabel.swift */; };
 		45BB8214297482B80084B984 /* StationCalloutDetailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB8213297482B80084B984 /* StationCalloutDetailRowView.swift */; };
+		45BB8219297499C40084B984 /* StationCalloutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB8218297499C40084B984 /* StationCalloutViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		45BB820F29746A930084B984 /* UIDetailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDetailLabel.swift; sourceTree = "<group>"; };
 		45BB821129746B430084B984 /* UIHeadlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHeadlineLabel.swift; sourceTree = "<group>"; };
 		45BB8213297482B80084B984 /* StationCalloutDetailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCalloutDetailRowView.swift; sourceTree = "<group>"; };
+		45BB8218297499C40084B984 /* StationCalloutViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCalloutViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,8 +244,9 @@
 		455D083B297333C700D56344 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				45B962F6297390D700720431 /* UtilitiesTests */,
 				455D083C297333E200D56344 /* ServiceTests */,
+				45B962F6297390D700720431 /* UtilitiesTests */,
+				45BB8217297499910084B984 /* ViewModelsTests */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -335,6 +338,14 @@
 				45B962FB2973B63400720431 /* StationCalloutViewModel.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		45BB8217297499910084B984 /* ViewModelsTests */ = {
+			isa = PBXGroup;
+			children = (
+				45BB8218297499C40084B984 /* StationCalloutViewModelTests.swift */,
+			);
+			path = ViewModelsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,6 +516,7 @@
 				455D08412973343300D56344 /* XCTest+XCTAssertThrowsError.swift in Sources */,
 				455D083E2973340800D56344 /* DefaultNetworkServiceTests.swift in Sources */,
 				4541DE5D29735E87005A7B52 /* DefaultWeatherServiceTests.swift in Sources */,
+				45BB8219297499C40084B984 /* StationCalloutViewModelTests.swift in Sources */,
 				45A0E30929733C2D006D0700 /* WeatherStationTests-WeatherStationMocks.generated.swift in Sources */,
 				4541DE5929735C8F005A7B52 /* Fixtures.swift in Sources */,
 				45B962F8297390FE00720431 /* MeanOfAnglesTests.swift in Sources */,

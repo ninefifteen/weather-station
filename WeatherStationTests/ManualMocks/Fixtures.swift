@@ -44,7 +44,7 @@ extension Station {
         temperature: nil,
         windSpeed: nil,
         windDirection: nil,
-        chanceOfPrecipitation: 0
+        chanceOfPrecipitation: nil
     )
 }
 
