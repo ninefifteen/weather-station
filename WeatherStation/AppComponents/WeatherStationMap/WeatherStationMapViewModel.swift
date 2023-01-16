@@ -14,6 +14,12 @@ class WeatherStationMapViewModel: ObservableObject {
     
     // MARK: - API
     
+    @Published var selectedDay: Day = .today {
+        didSet {
+            updateDisplayedStations()
+        }
+    }
+    
     @Published var displayedStations: [Station] = []
     
     private(set) lazy var initialRegion: MKCoordinateRegion = {
@@ -21,6 +27,9 @@ class WeatherStationMapViewModel: ObservableObject {
         let span = MKCoordinateSpan(latitudeDelta: 25.0, longitudeDelta: 20.0)
         return MKCoordinateRegion(center: center, span: span)
     }()
+    
+    let dayPickerTodayText = "Today"
+    let dayPickerTomorrowText = "Tomorrow"
     
     func onAppear() async {
         await fetchWeather()
@@ -48,6 +57,11 @@ class WeatherStationMapViewModel: ObservableObject {
     }
     
     private func updateDisplayedStations() {
-        displayedStations = weatherToday
+        switch selectedDay {
+        case .today:
+            displayedStations = weatherToday
+        case .tomorrow:
+            displayedStations = weatherTomorrow
+        }
     }
 }

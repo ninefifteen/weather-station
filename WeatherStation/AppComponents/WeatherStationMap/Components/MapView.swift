@@ -15,6 +15,11 @@ struct MapView: UIViewRepresentable {
     let initialRegion: MKCoordinateRegion
     let stations: [Station]
     
+    init(initialRegion: MKCoordinateRegion, stations: [Station]) {
+        self.initialRegion = initialRegion
+        self.stations = stations
+    }
+    
     // MARK: - Properties
     
     private var stationAnnotations: [StationAnnotation] {
@@ -34,7 +39,25 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: MKMapView, context: Context) {
+        context.coordinator.isSwitching = true
+        let oldAnnotations = mapView.annotations
         mapView.addAnnotations(stationAnnotations)
+        mapView.removeAnnotations(oldAnnotations)
+        reselectSelectedAnnotationId(mapView, context: context)
+        context.coordinator.isSwitching = false
+    }
+    
+    // MARK: = Functions
+    
+    func reselectSelectedAnnotationId(_ mapView: MKMapView, context: Context) {
+        guard let selectedStationId = context.coordinator.selectedStationId,
+              let selectedAnnotation = mapView.annotations.first(where: { annotation in
+                  if let stationAnnotation = annotation as? StationAnnotation {
+                      return stationAnnotation.station.id == selectedStationId
+                  }
+                  return false
+              }) else { return }
+        mapView.selectAnnotation(selectedAnnotation, animated: false)
     }
     
     // MARK: - Coordinator
@@ -47,6 +70,9 @@ struct MapView: UIViewRepresentable {
         
         private let clusterAnnotationIdentifier = "cluster"
         private let stationAnnotationIdentifier = "station"
+        
+        var selectedStationId: String?
+        var isSwitching = false
         
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             switch annotation {
@@ -112,12 +138,24 @@ struct MapView: UIViewRepresentable {
             }
             
             annotationView.clusteringIdentifier = "cluster"
-            annotationView.titleVisibility = .hidden
+            annotationView.titleVisibility = .visible
             
             let calloutView = StationCalloutView(station: stationAnnotation.station)
             annotationView.detailCalloutAccessoryView = calloutView
             
             return annotationView
+        }
+        
+        func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+            if let stationAnnotation = annotation as? StationAnnotation {
+                selectedStationId = stationAnnotation.station.id
+            }
+        }
+        
+        func mapView(_ mapView: MKMapView, didDeselect annotation: MKAnnotation) {
+            if let _ = annotation as? StationAnnotation, !isSwitching {
+                selectedStationId = nil
+            }
         }
         
         func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
