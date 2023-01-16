@@ -10,6 +10,7 @@
 		450A61DA2975BA9500970615 /* StationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450A61D92975BA9500970615 /* StationAnnotationView.swift */; };
 		450A61DC2975E16300970615 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 450A61DB2975E16300970615 /* Colors.xcassets */; };
 		450A61DE2975E26800970615 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450A61DD2975E26800970615 /* UIColor+Extensions.swift */; };
+		450A61E02975F69800970615 /* CLLocationCoordinate2D+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450A61DF2975F69800970615 /* CLLocationCoordinate2D+Extensions.swift */; };
 		4541DE4F297355B6005A7B52 /* WeatherStationMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541DE4E297355B6005A7B52 /* WeatherStationMapViewModel.swift */; };
 		4541DE51297355CB005A7B52 /* WeatherStationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541DE50297355CB005A7B52 /* WeatherStationMapView.swift */; };
 		4541DE5329735731005A7B52 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541DE5229735731005A7B52 /* WeatherService.swift */; };
@@ -61,6 +62,7 @@
 		450A61D92975BA9500970615 /* StationAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationAnnotationView.swift; sourceTree = "<group>"; };
 		450A61DB2975E16300970615 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		450A61DD2975E26800970615 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		450A61DF2975F69800970615 /* CLLocationCoordinate2D+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extensions.swift"; sourceTree = "<group>"; };
 		4541DE4E297355B6005A7B52 /* WeatherStationMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationMapViewModel.swift; sourceTree = "<group>"; };
 		4541DE50297355CB005A7B52 /* WeatherStationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStationMapView.swift; sourceTree = "<group>"; };
 		4541DE5229735731005A7B52 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				45B962F229737F0500720431 /* Array+Extensions.swift */,
+				450A61DF2975F69800970615 /* CLLocationCoordinate2D+Extensions.swift */,
 				450A61DD2975E26800970615 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
@@ -530,6 +533,7 @@
 				455D083029732F9400D56344 /* DefaultNetworkService.swift in Sources */,
 				4541DE51297355CB005A7B52 /* WeatherStationMapView.swift in Sources */,
 				45BB821029746A930084B984 /* UIDetailLabel.swift in Sources */,
+				450A61E02975F69800970615 /* CLLocationCoordinate2D+Extensions.swift in Sources */,
 				455D083429732FB700D56344 /* DefaultURLService.swift in Sources */,
 				455D082A29732F4000D56344 /* Data+Extensions.swift in Sources */,
 				45B962FC2973B63400720431 /* StationCalloutViewModel.swift in Sources */,

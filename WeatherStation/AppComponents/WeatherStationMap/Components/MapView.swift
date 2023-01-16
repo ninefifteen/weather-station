@@ -14,19 +14,15 @@ struct MapView: UIViewRepresentable {
     
     let stations: [Station]
     
-    init(displayRegion: Binding<MKCoordinateRegion>, stations: [Station]) {
-        _displayRegion = displayRegion
+    init(initialRegion: MKCoordinateRegion, stations: [Station]) {
+        _displayRegion = State(initialValue: initialRegion)
         self.stations = stations
     }
     
     // MARK: - Properties
     
-    @Binding private var displayRegion: MKCoordinateRegion
-    
-    private var stationAnnotations: [StationAnnotation] {
-        stations.map { StationAnnotation(station: $0) }
-    }
-    
+    @State private var displayRegion: MKCoordinateRegion
+        
     // MARK: - UIViewRepresentable
     
     func makeUIView(context: Context) -> MKMapView {
@@ -34,18 +30,34 @@ struct MapView: UIViewRepresentable {
         mapView.setRegion(displayRegion, animated: false)
         mapView.mapType = .standard
         mapView.isRotateEnabled = false
-        mapView.addAnnotations(stationAnnotations)
         mapView.delegate = context.coordinator
+        updateAnnotations(for: mapView)
         return mapView
     }
     
     func updateUIView(_ mapView: MKMapView, context: Context) {
         context.coordinator.isSwitching = true
-        let oldAnnotations = mapView.annotations
-        mapView.addAnnotations(stationAnnotations)
-        mapView.removeAnnotations(oldAnnotations)
+        updateAnnotations(for: mapView)
         reselectSelectedAnnotationId(mapView, context: context)
         context.coordinator.isSwitching = false
+    }
+    
+    private func updateAnnotations(for mapView: MKMapView) {
+        let region = displayRegion
+        
+        let stationsInRegion = Set(stations.filter { $0.coordinate.isContained(in: region) })
+        let currentlyDisplayedAnnotations = Set(mapView.annotations.compactMap { $0 as? StationAnnotation })
+        let currentlyDisplayedStations = Set(currentlyDisplayedAnnotations.map { $0.station })
+        let currentlyDisplayedStationsInRegion = currentlyDisplayedStations.filter{ $0.coordinate.isContained(in: region) }
+        
+        // Get the annotations to add by finding the stations that are in the visible region and are not already being displayed.
+        let annotationsToAdd = stationsInRegion.subtracting(currentlyDisplayedStationsInRegion).map { StationAnnotation(station: $0) }
+        
+        // Get the stations to remove by finding the currently displayed stations that are not in the set of stations in the region.
+        let annotationsToRemove = Array(currentlyDisplayedAnnotations.filter { !stationsInRegion.contains($0.station) })
+                
+        mapView.addAnnotations(annotationsToAdd)
+        mapView.removeAnnotations(annotationsToRemove)
     }
     
     // MARK: = Functions
@@ -129,15 +141,6 @@ struct MapView: UIViewRepresentable {
             }
         }
         
-        func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-//            print("regionWillChange region: \(mapView.region)")
-        }
-        
-        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//            print("regionDidChange region: \(mapView.region)")
-        }
-        
-        // Updates as you drag.
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             displayRegion = mapView.region
         }

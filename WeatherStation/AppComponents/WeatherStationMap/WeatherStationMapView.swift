@@ -24,7 +24,7 @@ struct WeatherStationMapView: View {
     
     var body: some View {
         ZStack {
-            MapView(displayRegion: $viewModel.displayRegion, stations: viewModel.displayedStations)
+            MapView(initialRegion: viewModel.initialRegion, stations: viewModel.stations)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Picker("", selection: $viewModel.selectedDay) {
