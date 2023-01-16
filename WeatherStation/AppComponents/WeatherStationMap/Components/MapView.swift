@@ -12,15 +12,16 @@ struct MapView: UIViewRepresentable {
     
     // MARK: - API
     
-    let initialRegion: MKCoordinateRegion
     let stations: [Station]
     
-    init(initialRegion: MKCoordinateRegion, stations: [Station]) {
-        self.initialRegion = initialRegion
+    init(displayRegion: Binding<MKCoordinateRegion>, stations: [Station]) {
+        _displayRegion = displayRegion
         self.stations = stations
     }
     
     // MARK: - Properties
+    
+    @Binding private var displayRegion: MKCoordinateRegion
     
     private var stationAnnotations: [StationAnnotation] {
         stations.map { StationAnnotation(station: $0) }
@@ -30,7 +31,7 @@ struct MapView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
-        mapView.setRegion(initialRegion, animated: false)
+        mapView.setRegion(displayRegion, animated: false)
         mapView.mapType = .standard
         mapView.isRotateEnabled = false
         mapView.addAnnotations(stationAnnotations)
@@ -63,12 +64,18 @@ struct MapView: UIViewRepresentable {
     // MARK: - Coordinator
     
     func makeCoordinator() -> MapCoordinator {
-        .init()
+        .init(displayRegion: $displayRegion)
     }
     
     final class MapCoordinator: NSObject, MKMapViewDelegate {
         
+        init(displayRegion: Binding<MKCoordinateRegion>) {
+            _displayRegion = displayRegion
+        }
+        
         private let stationAnnotationIdentifier = "station"
+        
+        @Binding private var displayRegion: MKCoordinateRegion
         
         var selectedStationId: String?
         var isSwitching = false
@@ -132,7 +139,7 @@ struct MapView: UIViewRepresentable {
         
         // Updates as you drag.
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-//            print("mapViewDidChangeVisibleRegion: \(mapView.region)")
+            displayRegion = mapView.region
         }
     }
 }

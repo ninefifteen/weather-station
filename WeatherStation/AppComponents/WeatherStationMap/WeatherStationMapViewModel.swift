@@ -22,11 +22,20 @@ class WeatherStationMapViewModel: ObservableObject {
     
     @Published var displayedStations: [Station] = []
     
-    private(set) lazy var initialRegion: MKCoordinateRegion = {
-        let center = CLLocationCoordinate2D(latitude: 40.9240, longitude: -108.0955)
-        let span = MKCoordinateSpan(latitudeDelta: 25.0, longitudeDelta: 20.0)
-        return MKCoordinateRegion(center: center, span: span)
-    }()
+    var displayRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 40.9240, longitude: -108.0955),
+        span: MKCoordinateSpan(latitudeDelta: 25.0, longitudeDelta: 20.0)
+    ) {
+        didSet {
+            print(displayRegion)
+        }
+    }
+    
+//    private(set) lazy var initialRegion: MKCoordinateRegion = {
+//        let center = CLLocationCoordinate2D(latitude: 40.9240, longitude: -108.0955)
+//        let span = MKCoordinateSpan(latitudeDelta: 25.0, longitudeDelta: 20.0)
+//        return MKCoordinateRegion(center: center, span: span)
+//    }()
     
     let dayPickerTodayText = "Today"
     let dayPickerTomorrowText = "Tomorrow"
