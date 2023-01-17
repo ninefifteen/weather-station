@@ -42,6 +42,19 @@ struct MapView: UIViewRepresentable {
         context.coordinator.isSwitching = false
     }
     
+    // MARK: = Functions
+    
+    func reselectSelectedAnnotationId(_ mapView: MKMapView, context: Context) {
+        guard let selectedStationId = context.coordinator.selectedStationId,
+              let selectedAnnotation = mapView.annotations.first(where: { annotation in
+                  if let stationAnnotation = annotation as? StationAnnotation {
+                      return stationAnnotation.station.id == selectedStationId
+                  }
+                  return false
+              }) else { return }
+        mapView.selectAnnotation(selectedAnnotation, animated: false)
+    }
+    
     private func updateAnnotations(for mapView: MKMapView) {
         let region = displayRegion
         
@@ -58,19 +71,6 @@ struct MapView: UIViewRepresentable {
                 
         mapView.addAnnotations(annotationsToAdd)
         mapView.removeAnnotations(annotationsToRemove)
-    }
-    
-    // MARK: = Functions
-    
-    func reselectSelectedAnnotationId(_ mapView: MKMapView, context: Context) {
-        guard let selectedStationId = context.coordinator.selectedStationId,
-              let selectedAnnotation = mapView.annotations.first(where: { annotation in
-                  if let stationAnnotation = annotation as? StationAnnotation {
-                      return stationAnnotation.station.id == selectedStationId
-                  }
-                  return false
-              }) else { return }
-        mapView.selectAnnotation(selectedAnnotation, animated: false)
     }
     
     // MARK: - Coordinator
@@ -143,6 +143,21 @@ struct MapView: UIViewRepresentable {
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             displayRegion = mapView.region
+        }
+    }
+    
+    // MARK: - MKAnnotation Station Wrapper
+    
+    final private class StationAnnotation: NSObject, MKAnnotation {
+        
+        init(station: Station) {
+            self.station = station
+        }
+        
+        let station: Station
+        
+        var coordinate: CLLocationCoordinate2D {
+            CLLocationCoordinate2D(latitude: station.latitude, longitude: station.longitude)
         }
     }
 }

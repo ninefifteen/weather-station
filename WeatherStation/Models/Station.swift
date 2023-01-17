@@ -24,16 +24,3 @@ extension Station {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
-
-class StationAnnotation: NSObject, MKAnnotation {
-    
-    init(station: Station) {
-        self.station = station
-    }
-    
-    let station: Station
-    
-    var coordinate: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: station.latitude, longitude: station.longitude)
-    }
-}
