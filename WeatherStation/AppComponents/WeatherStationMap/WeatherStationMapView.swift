@@ -48,6 +48,11 @@ struct WeatherStationMapView: View {
                 LoadingOverlayView()
             }
         }
+        .alert(viewModel.alertTitle, isPresented: $viewModel.isAlertShown, actions: {
+            Button("OK", role: .cancel) {}
+        }, message: {
+            Text(viewModel.alertMessage)
+        })
         .onAppear {
             Task {
                 await viewModel.onAppear()

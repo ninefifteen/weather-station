@@ -20,6 +20,12 @@ class WeatherStationMapViewModel: ObservableObject {
     
     // MARK: - API
     
+    @Published var isAlertShown = false {
+        didSet {
+            if !isAlertShown { appError = nil }
+        }
+    }
+    
     @Published var isLoading = false
     
     @Published var selectedDay: Day = .today {
@@ -29,8 +35,15 @@ class WeatherStationMapViewModel: ObservableObject {
     }
     
     @Published var selectedStationField: StationField = .temperature
-    
     @Published var stations: [Station] = []
+    
+    var alertMessage: String {
+        appError?.alertMessage ?? AppError.unknown.alertMessage
+    }
+    
+    var alertTitle: String {
+        appError?.alertTitle ?? AppError.unknown.alertTitle
+    }
     
     private(set) lazy var initialRegion: MKCoordinateRegion = {
         let center = CLLocationCoordinate2D(latitude: 40.9240, longitude: -108.0955)
@@ -53,6 +66,12 @@ class WeatherStationMapViewModel: ObservableObject {
     
     @Injected(Container.weatherService) private var weatherService: WeatherService
     
+    private var appError: AppError? {
+        didSet {
+            if appError != nil { isAlertShown = true }
+        }
+    }
+    
     private var weatherToday: [Station] = []
     private var weatherTomorrow: [Station] = []
 
@@ -63,13 +82,20 @@ class WeatherStationMapViewModel: ObservableObject {
             isLoading = true
             async let today = weatherService.weather(for: .today)
             async let tomorrow = weatherService.weather(for: .tomorrow)
-//            try await Task.sleep(nanoseconds: UInt64(2 * Double(NSEC_PER_SEC)))
             weatherToday = try await today
             weatherTomorrow = try await tomorrow
-            isLoading = false
             updateDisplayedStations()
         } catch {
-            // TODO: handle error
+            showAlert(for: error)
+        }
+        isLoading = false
+    }
+    
+    private func showAlert(for error: Error) {
+        if let error = error as? AppError {
+            appError = error
+        } else {
+            appError = AppError.unknown
         }
     }
     

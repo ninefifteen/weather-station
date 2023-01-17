@@ -11,8 +11,14 @@ import Factory
 import Foundation
 
 extension Container {
-    static let networkService = Factory { DefaultNetworkService() as NetworkService }
-    static let urlService = Factory { DefaultURLService() as URLService }
-    static let urlSession = Factory { URLSession(configuration: .default) as URLSessionAPI }
-    static let weatherService = Factory { DefaultWeatherService() as WeatherService }
+    static let networkService = Factory(scope: .singleton) { DefaultNetworkService() as NetworkService }
+    static let urlService = Factory(scope: .singleton) { DefaultURLService() as URLService }
+    static let urlSession = Factory(scope: .singleton) {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 15
+        configuration.timeoutIntervalForResource = 15
+        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        return URLSession(configuration: configuration) as URLSessionAPI
+    }
+    static let weatherService = Factory(scope: .singleton) { DefaultWeatherService() as WeatherService }
 }
