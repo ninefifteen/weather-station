@@ -134,7 +134,7 @@ struct MapView: UIViewRepresentable {
             annotationView.displayPriority = .defaultHigh
             annotationView.canShowCallout = true
             
-            setTextOfLabel(annotationView.label, with: selectedStationField, in: stationAnnotation)
+            configureStationAnnotationView(annotationView, with: selectedStationField, in: stationAnnotation)
             
             let calloutView = StationCalloutView(station: stationAnnotation.station)
             annotationView.detailCalloutAccessoryView = calloutView
@@ -142,8 +142,14 @@ struct MapView: UIViewRepresentable {
             return annotationView
         }
         
-        private func setTextOfLabel(_ label: UILabel, with selectedStationField: StationField, in stationAnnotation: StationAnnotation) {
+        private func configureStationAnnotationView(
+            _ view: StationAnnotationView,
+            with selectedStationField: StationField,
+            in stationAnnotation: StationAnnotation
+        ) {
             var text: String?
+            view.displayWindIndicator(false)
+            
             switch selectedStationField {
             case .temperature:
                 if let value = stationAnnotation.station.temperature {
@@ -153,19 +159,21 @@ struct MapView: UIViewRepresentable {
                 if let value = stationAnnotation.station.windSpeed {
                     text = String(format: "%.0f", value) + "kts"
                 }
+                if let value = stationAnnotation.station.windDirection {
+                    view.displayWindIndicator(true, windDirection: value)
+                }
             case .precipitation:
                 if let value = stationAnnotation.station.chanceOfPrecipitation {
                     text = String(format: "%.0f", value) + "%"
                 }
             }
             if let text = text {
-                label.text = text
-                label.alpha = 1
+                view.label.text = text
+                view.label.alpha = 1
             } else {
-                label.text = "000"
-                label.alpha = 0
+                view.label.text = "000"
+                view.label.alpha = 0
             }
-            
         }
         
         func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {

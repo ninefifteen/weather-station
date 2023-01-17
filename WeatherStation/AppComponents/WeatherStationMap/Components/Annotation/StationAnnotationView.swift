@@ -24,6 +24,18 @@ class StationAnnotationView: MKAnnotationView {
         return label
     }()
     
+    func displayWindIndicator(_ display: Bool, windDirection: Double = 0) {
+        if display {
+            let degrees: CGFloat = windDirection
+            let radians: CGFloat = degrees * (.pi / 180)
+            windIndicator.transform = CGAffineTransform(rotationAngle: radians)
+            stackView.addArrangedSubview(windIndicator)
+        } else {
+            stackView.removeArrangedSubview(windIndicator)
+            windIndicator.removeFromSuperview()
+        }
+    }
+    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         configureView()
@@ -35,7 +47,7 @@ class StationAnnotationView: MKAnnotationView {
     }
     
     // MARK: - Properties
-    
+        
     private lazy var bottomCornerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -68,8 +80,25 @@ class StationAnnotationView: MKAnnotationView {
         return view
     }()
     
-    let normalAnchorPoint = CGPointMake(0.5, 0.87)
-    let selectedAnchorPoint = CGPointMake(0.5, 0.14)
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private lazy var  windIndicator: UIImageView = {
+        let image = UIImage(systemName: "arrow.up")
+        let imageView = UIImageView(image: image)
+        imageView.tintColor = .reverseLabel
+        return imageView
+    } ()
+    
+    private lazy var normalAnchorPoint = CGPointMake(0.5, 0.87)
+    private lazy var selectedAnchorPoint = CGPointMake(0.5, 0.14)
     
     // MARK: - Functions
     
@@ -79,10 +108,13 @@ class StationAnnotationView: MKAnnotationView {
         backgroundColor = .clear
         
         addSubview(normalView)
+        addSubview(selectedView)
+        
+        stackView.addArrangedSubview(label)
+        
         normalView.addSubview(bottomCornerView)
         normalView.addSubview(bubbleView)
-        bubbleView.addSubview(label)
-        addSubview(selectedView)
+        bubbleView.addSubview(stackView)
         
         let angle = (45.0 * CGFloat.pi) / 180
         let transform = CGAffineTransform(rotationAngle: angle)
@@ -113,12 +145,12 @@ class StationAnnotationView: MKAnnotationView {
         ])
         
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: bubbleView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: bubbleView.centerYAnchor),
-            label.topAnchor.constraint(equalTo: bubbleView.topAnchor, constant: 8),
-            label.bottomAnchor.constraint(equalTo: bubbleView.bottomAnchor, constant: -8),
-            label.leadingAnchor.constraint(equalTo: bubbleView.leadingAnchor, constant: 10),
-            label.trailingAnchor.constraint(equalTo: bubbleView.trailingAnchor, constant: -10),
+            stackView.centerXAnchor.constraint(equalTo: bubbleView.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: bubbleView.centerYAnchor),
+            stackView.topAnchor.constraint(equalTo: bubbleView.topAnchor, constant: 8),
+            stackView.bottomAnchor.constraint(equalTo: bubbleView.bottomAnchor, constant: -8),
+            stackView.leadingAnchor.constraint(equalTo: bubbleView.leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: bubbleView.trailingAnchor, constant: -10),
         ])
         
         NSLayoutConstraint.activate([

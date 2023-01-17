@@ -26,7 +26,14 @@ class StationCalloutDetailRowView: UIView {
     
     // MARK: - Properties
     
-    private let stackView = UIStackView()
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .leading
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
     
     private let keyText: String
     private let valueText: String
@@ -43,10 +50,6 @@ class StationCalloutDetailRowView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         separatorLabel.setContentCompressionResistancePriority(.init(999), for: .horizontal)
         valueLabel.setContentCompressionResistancePriority(.init(999), for: .horizontal)
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .leading
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(keyLabel)
         stackView.addArrangedSubview(separatorLabel)
         stackView.addArrangedSubview(valueLabel)
