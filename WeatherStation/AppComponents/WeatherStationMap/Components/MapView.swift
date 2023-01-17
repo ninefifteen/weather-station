@@ -12,16 +12,18 @@ struct MapView: UIViewRepresentable {
     
     // MARK: - API
     
-    let stations: [Station]
-    
-    init(initialRegion: MKCoordinateRegion, stations: [Station]) {
+    init(initialRegion: MKCoordinateRegion, stations: [Station], selectedStationField: StationField) {
         _displayRegion = State(initialValue: initialRegion)
         self.stations = stations
+        self.selectedStationField = selectedStationField
     }
     
     // MARK: - Properties
     
     @State private var displayRegion: MKCoordinateRegion
+    
+    private let stations: [Station]
+    private let selectedStationField: StationField
         
     // MARK: - UIViewRepresentable
     
@@ -36,10 +38,15 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: MKMapView, context: Context) {
-        context.coordinator.isSwitching = true
-        updateAnnotations(for: mapView)
+        context.coordinator.isUpdating = true
+        if context.coordinator.selectedStationField != selectedStationField {
+            context.coordinator.selectedStationField = selectedStationField
+            updateAnnotations(for: mapView, isFieldSwitch: true)
+        } else {
+            updateAnnotations(for: mapView, isFieldSwitch: false)
+        }
         reselectSelectedAnnotationId(mapView, context: context)
-        context.coordinator.isSwitching = false
+        context.coordinator.isUpdating = false
     }
     
     // MARK: = Functions
@@ -55,7 +62,8 @@ struct MapView: UIViewRepresentable {
         mapView.selectAnnotation(selectedAnnotation, animated: false)
     }
     
-    private func updateAnnotations(for mapView: MKMapView) {
+    private func updateAnnotations(for mapView: MKMapView, isFieldSwitch: Bool = false) {
+        
         let region = displayRegion
         
         let stationsInRegion = Set(stations.filter { $0.coordinate.isContained(in: region) })
@@ -63,12 +71,20 @@ struct MapView: UIViewRepresentable {
         let currentlyDisplayedStations = Set(currentlyDisplayedAnnotations.map { $0.station })
         let currentlyDisplayedStationsInRegion = currentlyDisplayedStations.filter{ $0.coordinate.isContained(in: region) }
         
-        // Get the annotations to add by finding the stations that are in the visible region and are not already being displayed.
-        let annotationsToAdd = stationsInRegion.subtracting(currentlyDisplayedStationsInRegion).map { StationAnnotation(station: $0) }
+        var annotationsToAdd: [StationAnnotation] = []
+        var annotationsToRemove: [StationAnnotation] = []
         
-        // Get the stations to remove by finding the currently displayed stations that are not in the set of stations in the region.
-        let annotationsToRemove = Array(currentlyDisplayedAnnotations.filter { !stationsInRegion.contains($0.station) })
-                
+        if isFieldSwitch {
+            // Remove and re-add all annotations to redraw label text.
+            annotationsToAdd = stationsInRegion.map { StationAnnotation(station: $0) }
+            annotationsToRemove = Array(currentlyDisplayedAnnotations)
+        } else {
+            // Get the annotations to add by finding the stations that are in the visible region and are not already being displayed.
+            annotationsToAdd = stationsInRegion.subtracting(currentlyDisplayedStationsInRegion).map { StationAnnotation(station: $0) }
+            // Get the stations to remove by finding the currently displayed stations that are not in the set of stations in the region.
+            annotationsToRemove = Array(currentlyDisplayedAnnotations.filter { !stationsInRegion.contains($0.station) })
+        }
+        
         mapView.addAnnotations(annotationsToAdd)
         mapView.removeAnnotations(annotationsToRemove)
     }
@@ -89,8 +105,9 @@ struct MapView: UIViewRepresentable {
         
         @Binding private var displayRegion: MKCoordinateRegion
         
+        var isUpdating = false
+        var selectedStationField: StationField = .temperature
         var selectedStationId: String?
-        var isSwitching = false
         
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             guard let stationAnnotation = annotation as? StationAnnotation else { return nil }
@@ -116,17 +133,39 @@ struct MapView: UIViewRepresentable {
             
             annotationView.displayPriority = .defaultHigh
             annotationView.canShowCallout = true
-
-            if let temperature = stationAnnotation.station.temperature {
-                annotationView.label.text = String(format: "%.0f°", temperature)
-            } else {
-                annotationView.label.text = ""
-            }
+            
+            setTextOfLabel(annotationView.label, with: selectedStationField, in: stationAnnotation)
             
             let calloutView = StationCalloutView(station: stationAnnotation.station)
             annotationView.detailCalloutAccessoryView = calloutView
 
             return annotationView
+        }
+        
+        private func setTextOfLabel(_ label: UILabel, with selectedStationField: StationField, in stationAnnotation: StationAnnotation) {
+            var text: String?
+            switch selectedStationField {
+            case .temperature:
+                if let value = stationAnnotation.station.temperature {
+                    text = String(format: "%.0f", value) + "°"
+                }
+            case .wind:
+                if let value = stationAnnotation.station.windSpeed {
+                    text = String(format: "%.0f", value) + "kts"
+                }
+            case .precipitation:
+                if let value = stationAnnotation.station.chanceOfPrecipitation {
+                    text = String(format: "%.0f", value) + "%"
+                }
+            }
+            if let text = text {
+                label.text = text
+                label.alpha = 1
+            } else {
+                label.text = "000"
+                label.alpha = 0
+            }
+            
         }
         
         func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
@@ -136,7 +175,7 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MKMapView, didDeselect annotation: MKAnnotation) {
-            if let _ = annotation as? StationAnnotation, !isSwitching {
+            if let _ = annotation as? StationAnnotation, !isUpdating {
                 selectedStationId = nil
             }
         }

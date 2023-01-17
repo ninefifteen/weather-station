@@ -24,7 +24,7 @@ struct WeatherStationMapView: View {
     
     var body: some View {
         ZStack {
-            MapView(initialRegion: viewModel.initialRegion, stations: viewModel.stations)
+            MapView(initialRegion: viewModel.initialRegion, stations: viewModel.stations, selectedStationField: viewModel.selectedStationField)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Picker("", selection: $viewModel.selectedDay) {
@@ -35,6 +35,14 @@ struct WeatherStationMapView: View {
                 .padding(.top, 12)
                 .padding(.horizontal, 28)
                 Spacer()
+                Picker("", selection: $viewModel.selectedStationField) {
+                    Text(viewModel.fieldPickerTemperatureText).tag(StationField.temperature)
+                    Text(viewModel.fieldPickerWindText).tag(StationField.wind)
+                    Text(viewModel.fieldPickerPrecipitationText).tag(StationField.precipitation)
+                }
+                .pickerStyle(.segmented)
+                .padding(.bottom, 32)
+                .padding(.horizontal, 28)
             }
             if viewModel.isLoading {
                 LoadingOverlayView()

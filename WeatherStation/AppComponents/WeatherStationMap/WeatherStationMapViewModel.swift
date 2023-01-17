@@ -9,6 +9,12 @@ import Factory
 import Foundation
 import MapKit
 
+enum StationField {
+    case temperature
+    case wind
+    case precipitation
+}
+
 @MainActor
 class WeatherStationMapViewModel: ObservableObject {
     
@@ -22,6 +28,8 @@ class WeatherStationMapViewModel: ObservableObject {
         }
     }
     
+    @Published var selectedStationField: StationField = .temperature
+    
     @Published var stations: [Station] = []
     
     private(set) lazy var initialRegion: MKCoordinateRegion = {
@@ -32,6 +40,10 @@ class WeatherStationMapViewModel: ObservableObject {
     
     let dayPickerTodayText = "Today"
     let dayPickerTomorrowText = "Tomorrow"
+    
+    let fieldPickerTemperatureText = "Temp"
+    let fieldPickerWindText = "Wind"
+    let fieldPickerPrecipitationText = "Precip %"
     
     func onAppear() async {
         await fetchWeather()
