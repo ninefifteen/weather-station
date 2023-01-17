@@ -14,6 +14,8 @@ class WeatherStationMapViewModel: ObservableObject {
     
     // MARK: - API
     
+    @Published var isLoading = false
+    
     @Published var selectedDay: Day = .today {
         didSet {
             updateDisplayedStations()
@@ -46,10 +48,13 @@ class WeatherStationMapViewModel: ObservableObject {
     
     private func fetchWeather() async {
         do {
+            isLoading = true
             async let today = weatherService.weather(for: .today)
             async let tomorrow = weatherService.weather(for: .tomorrow)
+//            try await Task.sleep(nanoseconds: UInt64(2 * Double(NSEC_PER_SEC)))
             weatherToday = try await today
             weatherTomorrow = try await tomorrow
+            isLoading = false
             updateDisplayedStations()
         } catch {
             // TODO: handle error

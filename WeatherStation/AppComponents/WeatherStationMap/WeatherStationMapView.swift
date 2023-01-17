@@ -36,6 +36,9 @@ struct WeatherStationMapView: View {
                 .padding(.horizontal, 28)
                 Spacer()
             }
+            if viewModel.isLoading {
+                LoadingOverlayView()
+            }
         }
         .onAppear {
             Task {
