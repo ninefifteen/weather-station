@@ -63,13 +63,12 @@ struct MapView: UIViewRepresentable {
     }
     
     private func updateAnnotations(for mapView: MKMapView, isFieldSwitch: Bool = false) {
+        let rect = mapView.visibleMapRect
         
-        let region = displayRegion
-        
-        let stationsInRegion = Set(stations.filter { $0.coordinate.isContained(in: region) })
+        let stationsInRegion = Set(stations.filter { $0.coordinate.isContained(in: rect) })
         let currentlyDisplayedAnnotations = Set(mapView.annotations.compactMap { $0 as? StationAnnotation })
         let currentlyDisplayedStations = Set(currentlyDisplayedAnnotations.map { $0.station })
-        let currentlyDisplayedStationsInRegion = currentlyDisplayedStations.filter{ $0.coordinate.isContained(in: region) }
+        let currentlyDisplayedStationsInRegion = currentlyDisplayedStations.filter{ $0.coordinate.isContained(in: rect) }
         
         var annotationsToAdd: [StationAnnotation] = []
         var annotationsToRemove: [StationAnnotation] = []
