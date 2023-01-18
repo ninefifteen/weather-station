@@ -97,15 +97,13 @@ class StationAnnotationView: MKAnnotationView {
         return imageView
     } ()
     
-    private lazy var normalAnchorPoint = CGPointMake(0.5, 0.87)
-    private lazy var selectedAnchorPoint = CGPointMake(0.5, 0.14)
-    
     // MARK: - Functions
     
     private func configureView() {
         frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        layer.anchorPoint = normalAnchorPoint
         backgroundColor = .clear
+        centerOffset = CGPoint(x: 0, y: -20)
+        calloutOffset = CGPoint(x: 0, y: 38)
         
         addSubview(normalView)
         addSubview(selectedView)
@@ -155,7 +153,7 @@ class StationAnnotationView: MKAnnotationView {
         
         NSLayoutConstraint.activate([
             selectedView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            selectedView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            selectedView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 20),
             selectedView.heightAnchor.constraint(equalToConstant: 10),
             selectedView.widthAnchor.constraint(equalToConstant: 10),
         ])
@@ -163,7 +161,6 @@ class StationAnnotationView: MKAnnotationView {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        layer.anchorPoint = selected ? selectedAnchorPoint : normalAnchorPoint
         normalView.layer.opacity = selected ? 0 : 1
         selectedView.layer.opacity = selected ? 1 : 0
     }
